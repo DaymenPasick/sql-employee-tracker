@@ -10,8 +10,8 @@ USE business_db
   
 
 /* need seed for role */
-INSERT INTO roles (title, salary)
-VALUES ('Relations Tech', 42,000)
+INSERT INTO roles (title, salary, department_id)
+VALUES ('Relations Tech', 42000.00, 01);
 
 
 

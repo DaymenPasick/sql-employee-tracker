@@ -6,10 +6,12 @@ USE business_db
  ('TechSupport'),
  ('Finance'),
  ('Dev'),
- ('Advirtisement'),
+ ('Advirtisement');
   
 
 /* need seed for role */
+INSERT INTO role (title, salary, department_id)
+VALUES ()
 
 
 

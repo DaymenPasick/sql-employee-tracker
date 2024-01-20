@@ -32,5 +32,11 @@ CREATE TABLE employees (
   REFERENCES roles(id),
   Foreign Key (manager_id) 
   REFERENCES employees(id)
+  ON DELETE SET NULL
 
 );
+/* 
+ALTER TABLE employees
+ALTER manager_id SET NULLIF(manager_id, ''); */
+
+/* mysql > select NULLIF(Name, '') as EmptyStringNULL from <table>*/

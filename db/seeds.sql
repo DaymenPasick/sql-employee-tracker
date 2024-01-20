@@ -27,12 +27,12 @@ VALUES ('Data Structure Specialist', 95000.00, 04),
 VALUES ('Data Security', 10500.00, 04),
 VALUES ('Implementation Dev', 100000.00, 04),
 VALUES ('Web Maintanance Technician', 95000.00, 04),
-VALUES ('Onboard Facilitator', 45000.00, 05),
-VALUES ('Onboard Facilitator', 45000.00, 05),
-VALUES ('Onboard Facilitator', 45000.00, 05),
-VALUES ('Onboard Facilitator', 45000.00, 06),
-VALUES ('Onboard Facilitator', 45000.00, 06),
-VALUES ('Onboard Facilitator', 45000.00, 06);
+VALUES ('Marketing Director', 95000.00, 05),
+VALUES ('Business Translator', 75000.00, 05),
+VALUES ('Leads&Adds Facilitator', 65000.00, 05),
+VALUES ('Facilities Manager', 65000.00, 06),
+VALUES ('Santitation Technician', 35000.00, 06),
+VALUES ('Contracted Cleaner', 45000.00, 06);
 
 
 

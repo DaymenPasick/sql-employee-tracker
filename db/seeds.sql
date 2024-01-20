@@ -38,7 +38,17 @@ VALUES ('Relations Manager', 80000.00, 1),
 
 
 
-INSERT INTO employees (first_name, last_name, role_id)
-VALUES ('John', 'Doe', 1),
-('Bo', 'Doe', 1);
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
+VALUES ('Emily', 'Love', 1, NULL),
+('Bronson', 'Dole', 1, NULL),
+('Bo', 'Doe', 1, NULL),
+('Bo', 'Doe', 1, NULL),
+('Bo', 'Doe', 1, NULL),
+('Bo', 'Doe', 1, NULL),
+('Bo', 'Doe', 1, NULL),
+('Bo', 'Doe', 1, NULL),
+('Bo', 'Doe', 1, NULL),
+('Bo', 'Doe', 1, NULL),
+('Bo', 'Doe', 1, NULL),
+('Bo', 'Doe', 1, NULL);
 /* ('Sue', 'Doe', 3, 1); */

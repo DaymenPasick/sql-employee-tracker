@@ -12,8 +12,8 @@ USE business_db
   
 
 
-INSERT INTO roles (title, salary, department_id)
-VALUES ('Relations Manager', 80000.00, 01),
+INSERT INTO roles (id, title, salary, department_id)
+VALUES (01, 'Relations Manager', 80000.00, 01),
  ('Security', 32000.00, 01),
  ('Onboard Facilitator', 45000.00, 01),
  ('Support Manager', 85000.00, 02),
@@ -32,10 +32,11 @@ VALUES ('Relations Manager', 80000.00, 01),
  ('Leads&Adds Facilitator', 65000.00, 05),
  ('Facilities Manager', 65000.00, 06),
  ('Santitation Technician', 35000.00, 06),
- ('Contracted Cleaner', 45000.00, 06);
+ ('Contracted Cleaner', 85000.00, 06);
 
 
 
 
 
 INSERT INTO employees (first_name, last_name, role_id, manager_id)
+VALUES ('John', 'Doe', )

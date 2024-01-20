@@ -37,5 +37,5 @@ VALUES ('Relations Manager', 80000.00, 01),
 
 
 
-/* need seeds for employee */
+
 /* INSERT INTO employees (first_name, last_name, role_id) */

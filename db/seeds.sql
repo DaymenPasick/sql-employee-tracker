@@ -38,4 +38,4 @@ VALUES ('Relations Manager', 80000.00, 01),
 
 
 
-/* INSERT INTO employees (first_name, last_name, role_id) */
+INSERT INTO employees (first_name, last_name, role_id, manager_id)

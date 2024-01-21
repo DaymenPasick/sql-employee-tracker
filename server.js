@@ -8,9 +8,10 @@ require('console.table');
 //for setting up connection to the business_db
 const db = mysql.createConnection(
     {
-
-
-
+        host: 'localhost',
+        user: 'root',
+        password:'', 
+        database: 'business_db'
     },
     console.log(`Connected to business_db`)
 );

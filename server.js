@@ -97,10 +97,13 @@ const actions = {
             })
     }, 
 
-    // //will handle choice to add department
-    // addDepartment: () => {
-    //     db.query(`Insert into departments (id, name) VALUES (${}, ${}`)
-    // },
+    //will handle choice to add department
+    addDepartment: () => {
+
+    //need to add prompt?? to get department name from user, then pass that into this query??
+
+        db.query(`Insert into departments (name) VALUES (${answers})`)
+    },
 
 
     // //will handle choice to add role

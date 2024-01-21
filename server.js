@@ -116,54 +116,48 @@ const actions = {
         })
     },
 
-    
-    addDepartment: () => {
-        const prompt = inquirer.createPromptModule();
-        prompt({
-            message: 'Please type your new department name',
-            type: 'input', 
-            name: 'new_department'
-        })
-        .then((answer) => {
-          db.query(`INSERT INTO departments (name) VALUES ('${answer.new_department}')`, (error, departments) => {
-            if (error) console.error(error)
-              console.log("\n\ " + `Sucessfully added ${answer.new_department} as a new department` + "\n\ ");
-                
-              //redirects user to initial prompt 
-              start()
-            })
-        })
-    },
-
-
-    addDepartment: () => {
-        const prompt = inquirer.createPromptModule();
-        prompt({
-            message: 'Please type your new department name',
-            type: 'input', 
-            name: 'new_department'
-        })
-        .then((answer) => {
-          db.query(`INSERT INTO departments (name) VALUES ('${answer.new_department}')`, (error, departments) => {
-            if (error) console.error(error)
-              console.log("\n\ " + `Sucessfully added ${answer.new_department} as a new department` + "\n\ ");
-                
-              //redirects user to initial prompt 
-              start()
-            })
-        })
-    },
-
-
     // //will handle choice to add role
-    // addRole: () => {
+    addRole: () => {
+        const prompt = inquirer.createPromptModule();
+        prompt({
+            message: 'Please type the name of the new role',
+            type: 'input', 
+            name: 'new_role'
+        })
+        .then((answer) => {
+          db.query(`INSERT INTO roles (name) VALUES ('${answer.new_role}')`, (error, roles) => {
+            if (error) console.error(error)
+              console.log("\n\ " + `Sucessfully added ${answer.new_role} as a new role` + "\n\ ");
+                
+              //redirects user to initial prompt 
+              start()
+            })
+        })
+    },
 
+    //will handle choice to add employee
+    // addDepartment: () => {
+    //     const prompt = inquirer.createPromptModule();
+    //     prompt({
+    //         message: 'Please type your new department name',
+    //         type: 'input', 
+    //         name: 'new_department'
+    //     })
+    //     .then((answer) => {
+    //       db.query(`INSERT INTO departments (name) VALUES ('${answer.new_department}')`, (error, departments) => {
+    //         if (error) console.error(error)
+    //           console.log("\n\ " + `Sucessfully added ${answer.new_department} as a new department` + "\n\ ");
+                
+    //           //redirects user to initial prompt 
+    //           start()
+    //         })
+    //     })
     // },
 
-    // //will handle choice to add employee
-    // addEmployee: () => {
 
-    // },
+
+
+ 
 
     // //will handle choice to update employee
     // updateEmployee: () => {

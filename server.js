@@ -77,8 +77,9 @@ const actions = {
         //     if (error) console.error(error);
         //     console.table(employees);
 
-            db.query('', ()=>{
-
+            db.query('SELECT * FROM employees JOIN departments ON roles.department_id = departments.id', ( error, employees ) => {
+                if (error) console.error(error);
+                console.table(employees)
                 
             })
 

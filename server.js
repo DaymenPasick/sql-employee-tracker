@@ -104,28 +104,21 @@ const actions = {
 
 
     //will handle choice to add role
+    addRole: () => {
 
+    },
 
     //will handle choice to add employee
+    addEmployee: () => {
 
+    },
 
     //will handle choice to update employee
+    updateEmployee: () => {
 
-    { name: 'Add Department', value: 'addDepartment'},
-    { name: 'Add Role', value: 'addRole'},
-    { name: 'Add Employee', value: 'addEmployee'},
-    { name: 'Update Employee', value: 'updateEmployee'},
+    },
 
-
-
-
-
-
-
-
-
-
-
+    //will handle user's choice to exit command prompt
     exit: () => {
         process.exit();
     }

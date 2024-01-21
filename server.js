@@ -73,17 +73,25 @@ const actions = {
 
     //will handle choice to View All Employees
     employeeList: () => {
-        db.query('SELECT * FROM employees', (error, employees) =>{
-            if (error) console.error(error);
-            console.table(employees);
+        // db.query('SELECT * FROM employees', (error, employees) =>{
+        //     if (error) console.error(error);
+        //     console.table(employees);
+
+            db.query('', ()=>{
+
+                
+            })
+
+            //needs to have some sort of query that will show
+            //department, title, and salary the employees belong to
 
             //redirects to initial user prompt
             start()
-        })
+        // })
     }, 
 
     exit: () => {
-        
+
         process.exit();
     }
 };

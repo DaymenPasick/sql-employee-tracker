@@ -84,9 +84,10 @@ const actions = {
         })
     },
 
+    //JOIN roles ON employees.role_id = roles.id
     //will handle choice to View All Employees
     employeeList: () => {
-            db.query('SELECT * FROM employees JOIN roles ON employees.role_id = roles.id', ( error, employees ) => {
+            db.query('SELECT * FROM employees', ( error, employees ) => {
                 if (error) console.error(error);
 
                 console.log(" \n\ "); //added this line for better table spacing

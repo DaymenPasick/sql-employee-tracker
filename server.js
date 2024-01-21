@@ -60,30 +60,30 @@ const actions = {
         })
 
     },
-    
-    departmentList: () => {
-        db.query('SELECT * FROM departments', (error, departments) =>{
+
+    //will handle choice to View All Roles
+    roleList: () => {
+        db.query('SELECT * FROM roles', (error, roles) =>{
             if (error) console.error(error);
-            console.table(departments);
+            console.table(roles);
             //redirects to initial user prompt
             start()
         })
 
     },
 
-    departmentList: () => {
-        db.query('SELECT * FROM departments', (error, departments) =>{
+    //will handle choice to View All Employees
+    employeeList: () => {
+        db.query('SELECT * FROM employees', (error, employees) =>{
             if (error) console.error(error);
-            console.table(departments);
+            console.table(employees);
             //redirects to initial user prompt
             start()
         })
 
     }
 
-    // roleList:
 
-    // employeeList:
 
     // exit:
 

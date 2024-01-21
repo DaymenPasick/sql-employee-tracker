@@ -156,7 +156,7 @@ const actions = {
 
 
     // //will handle choice to add new employee
-    addRole: () => {
+    addEmployee: () => {
         const prompt = inquirer.createPromptModule();
 
         //setting prompt questions for adding new role
@@ -168,7 +168,7 @@ const actions = {
             },
             {
             message: 'Please type the last name of the new employee',
-            type: 'number', 
+            type: 'input', 
             name: 'new_last'
             },
             {
@@ -185,11 +185,11 @@ const actions = {
         //will take above prompt responses and insert into roles table/log response
         prompt(newEmployeePrompt)
         .then((answer) => {
-          db.query(`INSERT INTO roles (first_name, last_name, role_id, manager_id)
-           VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
-           (error, roles) => {
+          db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id)
+           VALUES ('${answer.new_first}', '${answer.new_last}', ${answer.role_id}, ${answer.manager_id})`,
+           (error, employees) => {
             if (error) console.error(error)
-              console.log("\n\ " + `Sucessfully added ${answer.new_title} as a new role` + "\n\ ");
+              console.log("\n\ " + `Sucessfully added ${answer.new_first} ${answer.new_last} as a new employee` + "\n\ ");
                 
               //redirects user to initial prompt 
               start()

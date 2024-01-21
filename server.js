@@ -109,7 +109,9 @@ const actions = {
             db.query(`INSERT INTO departments (name) VALUES ('${answer.new_department}')`, (error, departments) => {
                 if (error) console.error(error)
 
-                console.table(departments)
+                console.log("\n\ " + `Sucessfully added ${answer.new_department} as a new department` + "\n\ ");
+                //redirects user to initial prompt 
+                start()
             })
          })
 

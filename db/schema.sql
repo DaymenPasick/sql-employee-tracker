@@ -5,9 +5,8 @@ CREATE DATABASE  business_db;
 USE business_db;
 
 CREATE TABLE departments (
-  id INT NOT NULL,
-  name VARCHAR(30) NOT NULL,
-  PRIMARY KEY (id)
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE roles (
@@ -18,7 +17,6 @@ CREATE TABLE roles (
   FOREIGN KEY (department_id)
   REFERENCES departments(id)
   ON DELETE SET NULL
-
 );
 
 
@@ -33,10 +31,4 @@ CREATE TABLE employees (
   Foreign Key (manager_id) 
   REFERENCES employees(id)
   ON DELETE SET NULL
-
 );
-/* 
-ALTER TABLE employees
-ALTER manager_id SET NULLIF(manager_id, ''); */
-
-/* mysql > select NULLIF(Name, '') as EmptyStringNULL from <table>*/

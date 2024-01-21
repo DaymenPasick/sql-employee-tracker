@@ -97,26 +97,26 @@ const actions = {
             })
     }, 
 
-    //will handle choice to add department
-    addDepartment: () => {
+    // //will handle choice to add department
+    // addDepartment: () => {
+    //     db.query(`Insert into departments (id, name) VALUES (${}, ${}`)
+    // },
 
-    },
 
+    // //will handle choice to add role
+    // addRole: () => {
 
-    //will handle choice to add role
-    addRole: () => {
+    // },
 
-    },
+    // //will handle choice to add employee
+    // addEmployee: () => {
 
-    //will handle choice to add employee
-    addEmployee: () => {
+    // },
 
-    },
+    // //will handle choice to update employee
+    // updateEmployee: () => {
 
-    //will handle choice to update employee
-    updateEmployee: () => {
-
-    },
+    // },
 
     //will handle user's choice to exit command prompt
     exit: () => {

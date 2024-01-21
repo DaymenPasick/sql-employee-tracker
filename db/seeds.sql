@@ -1,13 +1,13 @@
 USE business_db
 
 
- INSERT INTO departments (id, name)
- VALUES (01, 'HR'),
- (02, 'TechSupport'),
- (03, 'Finance'),
- (04, 'Dev'),
- (05, 'Advirtisement'),
- (06, 'Facilities');
+ INSERT INTO departments (name)
+ VALUES ('HR'),
+ ('TechSupport'),
+ ('Finance'),
+ ('Dev'),
+ ('Advirtisement'),
+ ('Facilities');
 
   
 

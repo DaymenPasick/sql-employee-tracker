@@ -15,3 +15,6 @@ const db = mysql.createConnection(
     },
     console.log(`Connected to business_db`)
 );
+
+//for allowing use of terminal prompts for the user
+const prompt = inquirer.createPromptModule();

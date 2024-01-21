@@ -26,7 +26,19 @@ const prompt = inquirer.createPromptModule();
 
 
 const start = () => {
+    prompt({
+        message: 'Choose one of the following options',
+        type: 'rawlist', 
+        name: 'view',
+        choices: [
 
+            
+        ]
+
+
+
+
+    })
 
 
 

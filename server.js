@@ -36,7 +36,7 @@ const start = () => {
             { name: 'View All Departments', value: 'departmentList'},
             { name: 'View All Roles', value: 'roleList'},
             { name: 'View All Employees', value: 'employeeList'},
-            { name: 'Exit', value: 'exit'},
+            
 
             //The following choices will return values for use in 
             //js database queries. Updating-purposed.
@@ -44,8 +44,7 @@ const start = () => {
             { name: 'Add Role', value: 'addRole'},
             { name: 'Add Employee', value: 'addEmployee'},
             { name: 'Update Employee', value: 'updateEmployee'},
-        
-
+            { name: 'Exit', value: 'exit'},
         ]
 
 

@@ -104,13 +104,16 @@ const actions = {
             message: 'Please type your new department name',
             type: 'input', 
             name: 'new_department'
-
-
         })
+         .then((answer) => {
+            db.query(`INSERT INTO departments (name) VALUES ('${answer.new_department}')`, (error, departments) => {
+                if (error) console.error(error)
 
-    //need to add prompt?? to get department name from user, then pass that into this query??
+                console.table(departments)
+            })
+         })
 
-        // db.query(`Insert into departments (name) VALUES (${answers})`)
+         
     },
 
 

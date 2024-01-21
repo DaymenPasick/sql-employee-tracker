@@ -50,10 +50,13 @@ const start = () => {
 
 const actions = {
 
+    //will handle choice to View All Departments
     departmentList: () => {
         db.query('SELECT * FROM departments', (error, departments) =>{
             if (error) console.error(error);
             console.table(departments);
+            //redirects to initial user prompt
+            start()
         })
 
     }

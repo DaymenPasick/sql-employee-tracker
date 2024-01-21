@@ -20,9 +20,7 @@ const db = mysql.createConnection(
 const prompt = inquirer.createPromptModule();
 
 
-//need a prompt that will let us choose from
-//the challenge-required options
-//View all Employees, View Departments, View All Roles, Also to exit
+
 
 
 //this will start our initial terminal prompts to give user

@@ -119,13 +119,29 @@ const actions = {
     // //will handle choice to add role
     addRole: () => {
         const prompt = inquirer.createPromptModule();
-        prompt({
+
+        //setting prompt questions for adding new role
+        const newRollPrompt = [
+            {
+            message: 'Please type the title of the new role',
+            type: 'input', 
+            name: 'new_title'
+            },
+            {
+            message: 'Please type the salary of the new role',
+            type: 'number', 
+            name: 'new_salary'
+            },
+            {
             message: 'Please type the name of the new role',
             type: 'input', 
-            name: 'new_role'
-        })
+            name: 'new_department_id'
+            },
+        ]
+
+        prompt(newRollPrompt)
         .then((answer) => {
-          db.query(`INSERT INTO roles (name) VALUES ('${answer.new_role}')`, (error, roles) => {
+          db.query(`INSERT INTO roles (title, salary, department_id) VALUES ('${answer.new_role}')`, (error, roles) => {
             if (error) console.error(error)
               console.log("\n\ " + `Sucessfully added ${answer.new_role} as a new role` + "\n\ ");
                 

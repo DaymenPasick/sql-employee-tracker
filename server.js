@@ -38,16 +38,15 @@ const start = () => {
             { name: 'View All Departments', value: 'departmentList'},
             { name: 'View All Roles', value: 'employeeList'},
             { name: 'View All Employees', value: 'employeeList'},
+            { name: 'Exit', value: 'exist'},
         ]
 
 
-
-
     })
-
-
-
-
+    //this will take the value from the key-value pair choosen based off
+    //user's initial terminal prompt answer. It will use that as a 
+    //parameter for our actions()
+     .then((answers) => actions[answers.view]())
 };
 
 start();

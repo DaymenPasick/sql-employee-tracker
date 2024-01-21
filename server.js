@@ -36,7 +36,7 @@ const start = () => {
             { name: 'View All Departments', value: 'departmentList'},
             { name: 'View All Roles', value: 'roleList'},
             { name: 'View All Employees', value: 'employeeList'},
-            { name: 'Exit', value: 'exist'},
+            { name: 'Exit', value: 'exit'},
         ]
 
 
@@ -46,5 +46,33 @@ const start = () => {
     //parameter for our actions()
      .then((answers) => actions[answers.view]())
 };
+
+
+const actions = {
+
+    departmentList:
+
+    roleList:
+
+    employeeList:
+
+    exit:
+
+
+
+
+
+
+
+
+};
+
+
+
+
+
+
+
+
 
 start();

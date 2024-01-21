@@ -32,11 +32,17 @@ const start = () => {
         name: 'view',
         choices: [
             //The following choices will return values for use in 
-            //js database queries.
+            //js database queries. Viewing-purposed.
             { name: 'View All Departments', value: 'departmentList'},
             { name: 'View All Roles', value: 'roleList'},
             { name: 'View All Employees', value: 'employeeList'},
             { name: 'Exit', value: 'exit'},
+
+            //The following choices will return values for use in 
+            //js database queries. Updating-purposed.
+            { name: 'View All Employees', value: 'employeeList'},
+        
+
         ]
 
 
@@ -48,6 +54,8 @@ const start = () => {
 };
 
 
+
+//actions object contains all methods that will handle initial terminal prompt answers
 const actions = {
     //will handle choice to View All Departments
     departmentList: () => {
@@ -94,11 +102,5 @@ const actions = {
 };
 
 
-
-
-
-
-
-
-
+//will initiate the entire program
 start();

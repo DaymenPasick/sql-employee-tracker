@@ -116,6 +116,7 @@ const actions = {
         })
     },
 
+
     // //will handle choice to add role
     addRole: () => {
         const prompt = inquirer.createPromptModule();
@@ -152,24 +153,44 @@ const actions = {
         })
     },
 
-    //will handle choice to add employee
-    // addDepartment: () => {
-    //     const prompt = inquirer.createPromptModule();
-    //     prompt({
-    //         message: 'Please type your new department name',
-    //         type: 'input', 
-    //         name: 'new_department'
-    //     })
-    //     .then((answer) => {
-    //       db.query(`INSERT INTO departments (name) VALUES ('${answer.new_department}')`, (error, departments) => {
-    //         if (error) console.error(error)
-    //           console.log("\n\ " + `Sucessfully added ${answer.new_department} as a new department` + "\n\ ");
+
+    // //will handle choice to add new employee
+    addRole: () => {
+        const prompt = inquirer.createPromptModule();
+
+        //setting prompt questions for adding new role
+        const newEmployeePrompt = [
+            {
+            message: 'Please type the title of the new role',
+            type: 'input', 
+            name: 'new_title'
+            },
+            {
+            message: 'Please type the salary of the new role',
+            type: 'number', 
+            name: 'new_salary'
+            },
+            {
+            message: 'Please type the deparment ID of the new role',
+            type: 'number', 
+            name: 'department_id'
+            },
+        ]
+        //will take above prompt responses and insert into roles table/log response
+        prompt(newEmployeePrompt)
+        .then((answer) => {
+          db.query(`INSERT INTO roles (title, salary, department_id) VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
+           (error, roles) => {
+            if (error) console.error(error)
+              console.log("\n\ " + `Sucessfully added ${answer.new_title} as a new role` + "\n\ ");
                 
-    //           //redirects user to initial prompt 
-    //           start()
-    //         })
-    //     })
-    // },
+              //redirects user to initial prompt 
+              start()
+            })
+        })
+    },
+
+
 
 
 

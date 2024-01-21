@@ -49,16 +49,15 @@ const start = () => {
 
 
 const actions = {
-
     //will handle choice to View All Departments
     departmentList: () => {
         db.query('SELECT * FROM departments', (error, departments) =>{
             if (error) console.error(error);
             console.table(departments);
+
             //redirects to initial user prompt
             start()
         })
-
     },
 
     //will handle choice to View All Roles
@@ -66,10 +65,10 @@ const actions = {
         db.query('SELECT * FROM roles', (error, roles) =>{
             if (error) console.error(error);
             console.table(roles);
+
             //redirects to initial user prompt
             start()
         })
-
     },
 
     //will handle choice to View All Employees
@@ -77,13 +76,14 @@ const actions = {
         db.query('SELECT * FROM employees', (error, employees) =>{
             if (error) console.error(error);
             console.table(employees);
+
             //redirects to initial user prompt
             start()
         })
-
     }, 
 
     exit: () => {
+        
         process.exit();
     }
 };

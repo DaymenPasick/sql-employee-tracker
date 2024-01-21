@@ -34,7 +34,7 @@ const start = () => {
             //The following choices will return values for use in 
             //js database queries.
             { name: 'View All Departments', value: 'departmentList'},
-            { name: 'View All Roles', value: 'employeeList'},
+            { name: 'View All Roles', value: 'roleList'},
             { name: 'View All Employees', value: 'employeeList'},
             { name: 'Exit', value: 'exist'},
         ]

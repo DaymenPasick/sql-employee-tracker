@@ -99,10 +99,18 @@ const actions = {
 
     //will handle choice to add department
     addDepartment: () => {
+        const prompt = inquirer.createPromptModule();
+        prompt({
+            message: 'Please type your new department name',
+            type: 'input', 
+            name: 'new_department'
+
+
+        })
 
     //need to add prompt?? to get department name from user, then pass that into this query??
 
-        db.query(`Insert into departments (name) VALUES (${answers})`)
+        // db.query(`Insert into departments (name) VALUES (${answers})`)
     },
 
 

@@ -121,7 +121,7 @@ const actions = {
         const prompt = inquirer.createPromptModule();
 
         //setting prompt questions for adding new role
-        const newRollPrompt = [
+        const newRolePrompt = [
             {
             message: 'Please type the title of the new role',
             type: 'input', 
@@ -138,8 +138,8 @@ const actions = {
             name: 'department_id'
             },
         ]
-
-        prompt(newRollPrompt)
+        //will take above prompt responses and insert into roles table/log response
+        prompt(newRolePrompt)
         .then((answer) => {
           db.query(`INSERT INTO roles (title, salary, department_id) VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
            (error, roles) => {

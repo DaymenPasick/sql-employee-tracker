@@ -53,7 +53,7 @@ const actions = {
     departmentList: () => {
         db.query('SELECT * FROM departments', (error, departments) =>{
             if (error) console.error(error);
-            
+
             console.log(" \n\ "); //added this line for better table spacing
             console.table(departments);
 
@@ -77,20 +77,12 @@ const actions = {
 
     //will handle choice to View All Employees
     employeeList: () => {
-        // db.query('SELECT * FROM employees', (error, employees) =>{
-        //     if (error) console.error(error);
-        //     console.table(employees);
-
             db.query('SELECT * FROM employees JOIN roles ON employees.role_id = roles.id', ( error, employees ) => {
                 if (error) console.error(error);
 
                 console.log(" \n\ "); //added this line for better table spacing
-                console.table(employees)
-                
+                console.table(employees) 
             })
-
-            //needs to have some sort of query that will show
-            //department, title, and salary the employees belong to
 
             //redirects to initial user prompt
             start()

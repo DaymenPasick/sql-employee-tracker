@@ -161,19 +161,24 @@ const actions = {
         //setting prompt questions for adding new role
         const newEmployeePrompt = [
             {
-            message: 'Please type the title of the new role',
+            message: 'Please type the first name of the new employee',
             type: 'input', 
-            name: 'new_title'
+            name: 'new_first'
             },
             {
-            message: 'Please type the salary of the new role',
+            message: 'Please type the last name of the new employee',
             type: 'number', 
-            name: 'new_salary'
+            name: 'new_last'
             },
             {
-            message: 'Please type the deparment ID of the new role',
+            message: 'Please type the role ID of the new employee',
             type: 'number', 
-            name: 'department_id'
+            name: 'role_id'
+            },
+            {
+            message: 'Please type the manager ID of the new employee',
+            type: 'number', 
+            name: 'manager_id'
             },
         ]
         //will take above prompt responses and insert into roles table/log response

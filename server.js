@@ -81,19 +81,11 @@ const actions = {
             start()
         })
 
+    }, 
+
+    exit: () => {
+        process.exit();
     }
-
-
-
-    // exit:
-
-
-
-
-
-
-
-
 };
 
 

@@ -40,7 +40,10 @@ const start = () => {
 
             //The following choices will return values for use in 
             //js database queries. Updating-purposed.
-            { name: 'View All Employees', value: 'employeeList'},
+            { name: 'Add Department', value: 'addDepartment'},
+            { name: 'Add Role', value: 'addRole'},
+            { name: 'Add Employee', value: 'addEmployee'},
+            { name: 'Update Employee', value: 'updateEmployee'},
         
 
         ]

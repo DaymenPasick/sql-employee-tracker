@@ -133,17 +133,18 @@ const actions = {
             name: 'new_salary'
             },
             {
-            message: 'Please type the name of the new role',
-            type: 'input', 
-            name: 'new_department_id'
+            message: 'Please type the deparment ID of the new role',
+            type: 'number', 
+            name: 'department_id'
             },
         ]
 
         prompt(newRollPrompt)
         .then((answer) => {
-          db.query(`INSERT INTO roles (title, salary, department_id) VALUES ('${answer.new_role}')`, (error, roles) => {
+          db.query(`INSERT INTO roles (title, salary, department_id) VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
+           (error, roles) => {
             if (error) console.error(error)
-              console.log("\n\ " + `Sucessfully added ${answer.new_role} as a new role` + "\n\ ");
+              console.log("\n\ " + `Sucessfully added ${answer.new_title} as a new role` + "\n\ ");
                 
               //redirects user to initial prompt 
               start()

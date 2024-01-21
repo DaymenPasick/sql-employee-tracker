@@ -142,7 +142,8 @@ const actions = {
         //will take above prompt responses and insert into roles table/log response
         prompt(newRolePrompt)
         .then((answer) => {
-          db.query(`INSERT INTO roles (title, salary, department_id) VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
+          db.query(`INSERT INTO roles (title, salary, department_id) 
+           VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
            (error, roles) => {
             if (error) console.error(error)
               console.log("\n\ " + `Sucessfully added ${answer.new_title} as a new role` + "\n\ ");
@@ -184,7 +185,8 @@ const actions = {
         //will take above prompt responses and insert into roles table/log response
         prompt(newEmployeePrompt)
         .then((answer) => {
-          db.query(`INSERT INTO roles (title, salary, department_id) VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
+          db.query(`INSERT INTO roles (first_name, last_name, role_id, manager_id)
+           VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
            (error, roles) => {
             if (error) console.error(error)
               console.log("\n\ " + `Sucessfully added ${answer.new_title} as a new role` + "\n\ ");

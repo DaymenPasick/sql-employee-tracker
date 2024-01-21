@@ -37,17 +37,16 @@ const start = () => {
             { name: 'View All Roles', value: 'roleList'},
             { name: 'View All Employees', value: 'employeeList'},
             
-
             //The following choices will return values for use in 
             //js database queries. Updating-purposed.
             { name: 'Add Department', value: 'addDepartment'},
             { name: 'Add Role', value: 'addRole'},
             { name: 'Add Employee', value: 'addEmployee'},
             { name: 'Update Employee', value: 'updateEmployee'},
+
+            //For user to exit out of prompt loop
             { name: 'Exit', value: 'exit'},
         ]
-
-
     })
     //this will take the value from the key-value pair choosen based off
     //user's initial terminal prompt answer. It will use that as a 
@@ -97,6 +96,35 @@ const actions = {
                  start()
             })
     }, 
+
+    //will handle choice to add department
+    addDepartment: () => {
+
+    },
+
+
+    //will handle choice to add role
+
+
+    //will handle choice to add employee
+
+
+    //will handle choice to update employee
+
+    { name: 'Add Department', value: 'addDepartment'},
+    { name: 'Add Role', value: 'addRole'},
+    { name: 'Add Employee', value: 'addEmployee'},
+    { name: 'Update Employee', value: 'updateEmployee'},
+
+
+
+
+
+
+
+
+
+
 
     exit: () => {
         process.exit();

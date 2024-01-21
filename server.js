@@ -82,15 +82,13 @@ const actions = {
 
                 console.log(" \n\ "); //added this line for better table spacing
                 console.table(employees) 
-            })
 
-            //redirects to initial user prompt
-            start()
-        // })
+                 //redirects to initial user prompt
+                 start()
+            })
     }, 
 
     exit: () => {
-
         process.exit();
     }
 };

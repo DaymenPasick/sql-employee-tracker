@@ -25,14 +25,19 @@ const prompt = inquirer.createPromptModule();
 //View all Employees, View Departments, View All Roles, Also to exit
 
 
+//this will start our initial terminal prompts to give user
+//options choices on what they want to view in the business_db
 const start = () => {
     prompt({
         message: 'Choose one of the following options',
         type: 'rawlist', 
         name: 'view',
         choices: [
-
-            
+            //The following choices will return values for use in 
+            //js database queries.
+            { name: 'View All Departments', value: 'departmentList'},
+            { name: 'View All Roles', value: 'employeeList'},
+            { name: 'View All Employees', value: 'employeeList'},
         ]
 
 

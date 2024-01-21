@@ -18,3 +18,8 @@ const db = mysql.createConnection(
 
 //for allowing use of terminal prompts for the user
 const prompt = inquirer.createPromptModule();
+
+
+//need a prompt that will let us choose from
+//the challenge-required options
+//View all Employees, View Departments, View All Roles

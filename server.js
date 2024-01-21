@@ -53,6 +53,8 @@ const actions = {
     departmentList: () => {
         db.query('SELECT * FROM departments', (error, departments) =>{
             if (error) console.error(error);
+            
+            console.log(" \n\ "); //added this line for better table spacing
             console.table(departments);
 
             //redirects to initial user prompt
@@ -64,6 +66,8 @@ const actions = {
     roleList: () => {
         db.query('SELECT * FROM roles', (error, roles) =>{
             if (error) console.error(error);
+
+            console.log(" \n\ "); //added this line for better table spacing
             console.table(roles);
 
             //redirects to initial user prompt
@@ -79,7 +83,8 @@ const actions = {
 
             db.query('SELECT * FROM employees JOIN roles ON employees.role_id = roles.id', ( error, employees ) => {
                 if (error) console.error(error);
-                console.log("Showing All Employee Information");
+
+                console.log(" \n\ "); //added this line for better table spacing
                 console.table(employees)
                 
             })

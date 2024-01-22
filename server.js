@@ -88,7 +88,7 @@ const actions = {
     employeeList: () => {
 
         // const trialJoin = 'SELECT employees.id, first_name, last_name, manager_name, role_id FROM employees LEFT OUTER JOIN roles ON employees.role_id = roles.id';
-        const trialJoin = 'SELECT * FROM employees JOIN roles ON employees.role_id = roles.id';
+        const trialJoin = 'SELECT * FROM employees;'
             db.query(trialJoin, ( error, employees ) => {
                 if (error) console.error(error);
 
@@ -185,12 +185,18 @@ const actions = {
             name: 'manager_id',
             default: 'NULL'
             },
+            {
+            message: 'Please type the name of the new employees manager',
+            type: 'input', 
+            name: 'manager_name',
+            default: 'NULL'
+            },
         ]
         //will take above prompt responses and insert into roles table/log response
         prompt(newEmployeePrompt)
         .then((answer) => {
-          db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id)
-           VALUES ('${answer.new_first}', '${answer.new_last}', ${answer.role_id}, ${answer.manager_id})`,
+          db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
+           VALUES ('${answer.new_first}', '${answer.new_last}', ${answer.role_id}, ${answer.manager_id},${answer.manager_name} )`,
            (error, employees) => {
             if (error) console.error(error)
               console.log("\n\ " + `Sucessfully added ${answer.new_first} ${answer.new_last} as a new employee` + "\n\ ");

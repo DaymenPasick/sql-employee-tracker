@@ -88,7 +88,13 @@ const actions = {
     employeeList: () => {
 
         // const trialJoin = 'SELECT employees.id, first_name, last_name, manager_name, role_id FROM employees LEFT OUTER JOIN roles ON employees.role_id = roles.id';
-        const trialJoin = 'SELECT * FROM employees;'
+        const trialJoin = `
+            SELECT employees.id, employees.first_name, employees.last_name, roles.title, roles.salary, departments.name AS department
+            FROM employees 
+            LEFT JOIN roles 
+            ON employees.role_id = roles.id
+            LEFT JOIN departments
+            ON roles.department_id = departments.id;`
             db.query(trialJoin, ( error, employees ) => {
                 if (error) console.error(error);
 
@@ -180,13 +186,13 @@ const actions = {
             name: 'role_id'
             },
             {
-            message: 'Please type the manager ID of the new employee',
+            message: 'Please type the manager ID of the new employee (press ENTER if none)',
             type: 'number', 
             name: 'manager_id',
             default: 'NULL'
             },
             {
-            message: 'Please type the name of the new employees manager',
+            message: 'Please type the name of the new employees manager (press ENTER if none)',
             type: 'input', 
             name: 'manager_name',
             default: 'NULL'

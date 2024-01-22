@@ -182,7 +182,8 @@ const actions = {
             {
             message: 'Please type the manager ID of the new employee',
             type: 'number', 
-            name: 'manager_id'
+            name: 'manager_id',
+            default: 'NULL'
             },
         ]
         //will take above prompt responses and insert into roles table/log response

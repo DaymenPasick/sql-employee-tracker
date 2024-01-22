@@ -87,7 +87,8 @@ const actions = {
     //will handle choice to View All Employees
     employeeList: () => {
 
-        const trialJoin = 'SELECT first_name, last_name, manager_name, role_id FROM employees JOIN roles ON employees.role_id = roles.id';
+        // const trialJoin = 'SELECT employees.id, first_name, last_name, manager_name, role_id FROM employees LEFT OUTER JOIN roles ON employees.role_id = roles.id';
+        const trialJoin = 'SELECT * FROM employees JOIN roles ON employees.role_id = roles.id';
             db.query(trialJoin, ( error, employees ) => {
                 if (error) console.error(error);
 

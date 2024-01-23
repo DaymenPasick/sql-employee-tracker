@@ -263,9 +263,7 @@ const actions = {
                      SET role_id = ${newRoleChoice.id} WHERE employees.id = ${employeeChoice.id}
                     `, (error, employees) => {
                         if (error) console.error(error)
-
                         console.log(" \n\ " + `Successfully changed employee's role` + " \n\ " );
-
 
                          //redirects user to initial prompt 
                          start()

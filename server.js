@@ -176,6 +176,19 @@ const actions = {
         //will take above prompt responses and insert into roles table
         prompt(newRolePrompt)
         .then((answer) => {
+
+            db.query(`
+            SELECT id as value,
+            name as name
+            FROM departments
+            `, (error, departments = []) => {
+                
+            })
+
+
+
+
+
           db.query(`INSERT INTO roles (title, salary, department_id) 
            VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
            (error, roles) => {

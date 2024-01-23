@@ -228,10 +228,11 @@ const actions = {
           SELECT id as value,
           CONCANT(first_name, ' ', last_name) as name
           FROM employee
-        `
+          `, (error, employees = []) => {
 
 
-        )
+
+          })
 
 
 

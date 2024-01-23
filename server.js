@@ -229,7 +229,12 @@ const actions = {
           CONCANT(first_name, ' ', last_name) as name
           FROM employee
           `, (error, employees = []) => {
-
+            prompt({
+                message: 'Choose an employee to update',
+                type:'rawlist',
+                name: 'employeeChoice',
+                choices: employees,
+            })
 
 
           })

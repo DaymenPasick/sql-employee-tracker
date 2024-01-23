@@ -220,10 +220,11 @@ const actions = {
 
 
 
-    // //will handle choice to update employee
-    // updateEmployee: () => {
-
-    // },
+    //will handle choice to update employee
+    updateEmployee: () => {
+        //need a prompt to choose employee
+        //need code to update info from that employee
+    },
 
     //will handle user's choice to exit command prompt
     exit: () => {

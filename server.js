@@ -222,9 +222,13 @@ const actions = {
               })
               .then((managerChoice) => {
                 console.log(managerChoice.id);
-                    
 
+                    db.query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice], (error, employees) => {
+                        console.table(employees)
 
+                        return employees
+                    })
+                     .then((employees))
 
 
                     db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id)

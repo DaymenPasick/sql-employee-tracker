@@ -212,15 +212,16 @@ const actions = {
             SELECT id as value,
             CONCAT(first_name, ' ', last_name) as name
             FROM employees
-            WHERE manager_id = NULL
+            WHERE employees.manager_id IS NULL
             `, (error, managers = []) => {  
               prompt({
-                  message: 'Choose the employee who needs their role updated',
+                  message: 'Choose the employees manager',
                   type:'rawlist',
                   name: 'id',
-                  choices: employees,
+                  choices: managers,
               })
               .then((managerChoice) => {
+                console.log(managerChoice.id);
                 db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
                 VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${answers.manager_id},${answers.manager_name} )`,
                 (error, employees) => {

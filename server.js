@@ -230,7 +230,7 @@ const actions = {
           FROM employees
           `, (error, employees = []) => {  //will populate an array from the value:name query above
             prompt({
-                message: 'Choose an employee to update',
+                message: 'Choose the employee who needs their role updated',
                 type:'rawlist',
                 name: 'id',
                 choices: employees,
@@ -245,7 +245,16 @@ const actions = {
                     console.table(employees)
 
 
-                db.query('SELECT id as value, title as name FROM roles')    
+                db.query(`SELECT id as value, title as name FROM roles`, 
+                         (error, roles = []) => {
+                        prompt({
+                            message: 'Choose a new role for the employee',
+                            type: 'rawlist',
+                            name: 'id',
+                            choices: roles,
+                        })
+
+                         })    
 
 
                 })

@@ -17,8 +17,8 @@ An app that will let you view and manage staff, departments, and positions in yo
  (https://www.awesomescreenshot.com/video/24297961?key=1469d22b2317e0b27abde5aa0b043241)
 
    
-- Terminal prompts to populate your newREADME
-    ![Sample README](./assets/imgs/terminalPromptsForREADME.png)   
+- Sample image of the prompt system:
+    ![Sample Terminal Prompts](./assets/imgs/sqlTerminalImg.png)   
    
 
 

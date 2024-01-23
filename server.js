@@ -221,13 +221,9 @@ const actions = {
                   choices: managers,
               })
               .then((managerChoice) => {
-
-                db.query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice], (error, employees) => {
-                    console.table(employees);
-
-
-                    db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
-                    VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${answers.manager_id},${answers.manager_name} )`,
+                console.log(managerChoice.id);
+                    db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id)
+                    VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${managerChoice.id})`,
                     (error, employees) => {
                      if (error) console.error(error)
                        console.log("\n\ " + `Sucessfully added ${answers.new_first} ${answers.new_last} as a new employee` + "\n\ ");
@@ -236,7 +232,6 @@ const actions = {
                        start()
 
                    });
-                 })
               }) 
             })  
         })

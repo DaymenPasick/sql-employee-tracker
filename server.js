@@ -243,7 +243,7 @@ const actions = {
 
                 db.query('SELECT * FROM ?? WHERE ?', ['employees', employeeChoiceID], (error, employees) => {
                     console.table(employees)
-
+                })
 
                 db.query(`SELECT id as value, title as name FROM roles`, 
                          (error, roles = []) => {
@@ -253,11 +253,18 @@ const actions = {
                             name: 'id',
                             choices: roles,
                         })
+                        .then((newRoleChoiceID) => {
+                            console.log(newRoleChoiceID)
 
+                            db.query('SELECT * FROM ?? WHERE ?', ['roles', newRoleChoiceID], (error, roles) => {
+                                console.table(roles)
+                            })
+
+                        })
                          })    
 
 
-                })
+                
             })
             // //will update employee selected from above prompt
             // .then((answer)=> {

@@ -226,7 +226,7 @@ const actions = {
         const prompt = inquirer.createPromptModule();
         db.query(`
           SELECT id as value,
-          CONCANT(first_name, ' ', last_name) as name
+          CONCAT(first_name, ' ', last_name) as name
           FROM employees
           `, (error, employees = []) => {
             prompt({
@@ -237,7 +237,9 @@ const actions = {
             })
             .then((answers) => {
                 console.log(answers);
-                db.query('SELECT * FROM ?? WHERE ?', ['employees', answers])
+                db.query('SELECT * FROM ?? WHERE ?', ['employees', answers], (error, employees) => {
+                    console.table(employees)
+                })
             })
           })
 

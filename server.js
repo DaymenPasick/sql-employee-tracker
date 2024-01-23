@@ -222,13 +222,14 @@ const actions = {
 
     //will handle choice to update employee
     updateEmployeeRole: () => {
-        //need a prompt to choose employee
         const prompt = inquirer.createPromptModule();
+
+        //will select first and last names from employee for populating into an employees array
         db.query(`
           SELECT id as value,
           CONCAT(first_name, ' ', last_name) as name
           FROM employees
-          `, (error, employees = []) => {  //will populate an array from the value:name query above
+          `, (error, employees = []) => {  
             prompt({
                 message: 'Choose the employee who needs their role updated',
                 type:'rawlist',
@@ -240,28 +241,26 @@ const actions = {
                 console.log(employeeChoiceID);
 
 
+                        //space holder
 
-                db.query('SELECT * FROM ?? WHERE ?', ['employees', employeeChoiceID], (error, employees) => {
-                    console.table(employees)
-                        })
 
-                db.query(`SELECT id as value, title as name FROM roles`, 
-                         (error, roles = []) => {
-                        prompt({
-                            message: 'Choose a new role for the employee',
-                            type: 'rawlist',
-                            name: 'id',
-                            choices: roles,
-                            })
-                            .then((newRoleChoiceID) => {
-                            console.log(newRoleChoiceID)
-
-                            db.query('SELECT * FROM ?? WHERE ?', ['roles', newRoleChoiceID], (error, roles) => {
-                                console.table(roles)
-                              })
-                            
-                            })
-                        })    
+        //will select role titles from roles for populating into a roles array       
+        db.query(`
+          SELECT id as value,
+          title as name FROM roles
+          `, (error, roles = []) => {
+            prompt({
+                message: 'Choose a new role for the employee',
+                type: 'rawlist',
+                name: 'id',
+                choices: roles,
+            })
+            //will select new role based off user's prompt choice
+            .then((newRoleChoiceID) => {
+            console.log(newRoleChoiceID)
+                //space holder
+            })
+           })    
 
 
                 
@@ -290,3 +289,14 @@ const actions = {
 
 //will initiate the entire program
 start();
+
+                            // db.query('SELECT * FROM ?? WHERE ?', ['roles', newRoleChoiceID], (error, roles) => {
+                            //     console.table(roles)
+                            //   })
+
+                // db.query('SELECT * FROM ?? WHERE ?', ['employees', employeeChoiceID], (error, employees) => {
+                //     console.table(employees)
+                //         })
+
+
+                

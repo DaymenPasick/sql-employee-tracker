@@ -230,7 +230,7 @@ const actions = {
                   message: 'Choose the employees manager',
                   type:'rawlist',
                   name: 'id',
-                  choices: managers,
+                  choices: managers
               })
               .then((managerChoice) => {
                 db.promise().query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice])

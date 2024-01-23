@@ -219,7 +219,23 @@ const actions = {
         prompt(newEmployeePrompt)
         .then((answers) => {
 
-            //will be use to prompt use to choose manager name
+
+
+            //will prompt user to choose a role
+            db.query(`
+            SELECT id as value,
+            title as name
+            FROM roles
+            
+            
+            
+            `)
+
+
+
+
+
+            //will be use to prompt user to choose manager name
             db.query(`
             SELECT id as value,
             CONCAT(first_name, ' ', last_name) as name

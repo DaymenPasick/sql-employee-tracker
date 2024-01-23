@@ -193,19 +193,7 @@ const actions = {
             type: 'number', 
             name: 'role_id',
             default:3
-            },
-            {
-            message: 'Please type the manager ID of the new employee (press ENTER if none)',
-            type: 'number', 
-            name: 'manager_id',
-            default: 'NULL'
-            },
-            {
-            message: 'Please type the name of the new employees manager (press ENTER if none)',
-            type: 'input', 
-            name: 'manager_name',
-            default: 'NULL'
-            },
+            }
         ]
         //will take above prompt responses and insert into employees table
         prompt(newEmployeePrompt)
@@ -225,10 +213,8 @@ const actions = {
                   choices: managers,
               })
               .then((managerChoice) => {
-                // console.log(managerChoice.id);
 
 
-               
                 db.promise().query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice])
                     .then((managerChoiceTable) => {
 

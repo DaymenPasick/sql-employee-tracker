@@ -173,22 +173,26 @@ const actions = {
     addEmployee: () => {
         const prompt = inquirer.createPromptModule();
 
-        //setting prompt questions for adding new role
+        //setting prompt questions for adding new employee
         const newEmployeePrompt = [
             {
             message: 'Please type the first name of the new employee',
             type: 'input', 
-            name: 'new_first'
+            name: 'new_first',
+            default: 'trial'
+
             },
             {
             message: 'Please type the last name of the new employee',
             type: 'input', 
-            name: 'new_last'
+            name: 'new_last',
+            default: 'employee'
             },
             {
             message: 'Please type the role ID of the new employee',
             type: 'number', 
-            name: 'role_id'
+            name: 'role_id',
+            default:3
             },
             {
             message: 'Please type the manager ID of the new employee (press ENTER if none)',
@@ -229,9 +233,8 @@ const actions = {
                     .then((managerChoiceTable) => {
                         // console.log(managerChoiceTable);
                         
-                        res.json(managerChoiceTable)
-
-                        console.log(managerChoiceTable);
+                        const table = JSON.stringify(managerChoiceTable)
+                        console.log(table[0]);
                     }) 
 
 

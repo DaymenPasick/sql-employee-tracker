@@ -205,37 +205,33 @@ const actions = {
         ]
         //will take above prompt responses and insert into employees table
         prompt(newEmployeePrompt)
-        .then((answer) => {
+        .then((answers) => {
 
-
-            // db.query(`
-            // SELECT id as value,
-            // CONCAT(first_name, ' ', last_name) as name
-            // FROM employees
-            // `, (error, employees = []) => {  
-            //   prompt({
-            //       message: 'Choose the employee who needs their role updated',
-            //       type:'rawlist',
-            //       name: 'id',
-            //       choices: employees,
-            //   })
-            //   //will select employee based off user's prompt choice
-            //   .then((employeeChoice) => {
-                  
-
-
-
-
-
-          db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
-           VALUES ('${answer.new_first}', '${answer.new_last}', ${answer.role_id}, ${answer.manager_id},${answer.manager_name} )`,
-           (error, employees) => {
-            if (error) console.error(error)
-              console.log("\n\ " + `Sucessfully added ${answer.new_first} ${answer.new_last} as a new employee` + "\n\ ");
-                
-              //redirects user to initial prompt 
-              start()
-            })
+            //will be use to prompt use to choose manager name
+            db.query(`
+            SELECT id as value,
+            CONCAT(first_name, ' ', last_name) as name
+            FROM employees
+            WHERE manager_id = NULL
+            `, (error, managers = []) => {  
+              prompt({
+                  message: 'Choose the employee who needs their role updated',
+                  type:'rawlist',
+                  name: 'id',
+                  choices: employees,
+              })
+              .then((managerChoice) => {
+                db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
+                VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${answers.manager_id},${answers.manager_name} )`,
+                (error, employees) => {
+                 if (error) console.error(error)
+                   console.log("\n\ " + `Sucessfully added ${answers.new_first} ${answers.new_last} as a new employee` + "\n\ ");
+                     
+                   //redirects user to initial prompt 
+                   start()
+                 })
+              }) 
+            })  
         })
     },
 

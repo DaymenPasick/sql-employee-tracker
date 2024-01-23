@@ -228,19 +228,25 @@ const actions = {
           SELECT id as value,
           CONCAT(first_name, ' ', last_name) as name
           FROM employees
-          `, (error, employees = []) => {
+          `, (error, employees = []) => {  //will populate an array from the value:name query above
             prompt({
                 message: 'Choose an employee to update',
                 type:'rawlist',
                 name: 'employeeChoice',
                 choices: employees,
             })
+            //will select employee based off user's prompt choice
             .then((answers) => {
                 console.log(answers);
                 db.query('SELECT * FROM ?? WHERE ?', ['employees', answers], (error, employees) => {
                     console.table(employees)
                 })
             })
+            //will update employee selected from above prompt
+            .then((answer)=> {
+                //need to have code for update query
+            })
+
           })
 
 

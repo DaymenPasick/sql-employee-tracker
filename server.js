@@ -278,7 +278,9 @@ const actions = {
 
     //will handle user's choice to exit command prompt
     exit: () => {
+        console.log(" \n\ Goodbye");
         process.exit();
+        
     }
 };
 

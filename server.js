@@ -1,5 +1,4 @@
 //for using dependencies in package.json
-const express = require('express')
 const mysql = require('mysql2')
 const inquirer = require('inquirer')
 
@@ -245,7 +244,7 @@ const actions = {
                         const managerId = managerChoiceTable[0][0].id;
                         const managerName = managerChoiceTable[0][0].first_name + " " + managerChoiceTable[0][0].last_name;
 
-                        //uses the prompt return data (answers) on line 201, and the consts right above to insert new employee
+                        //uses the prompt return data (answers) on line 223, and the consts right above to insert new employee
                         db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
                         VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${managerId}, '${managerName}' )`,
                         (error, employees) => {

@@ -202,21 +202,17 @@ const actions = {
             {
             message: 'Please type the first name of the new employee',
             type: 'input', 
-            name: 'new_first',
-            default: 'trial'
-
+            name: 'new_first'
             },
             {
             message: 'Please type the last name of the new employee',
             type: 'input', 
-            name: 'new_last',
-            default: 'employee'
+            name: 'new_last'
             },
             {
             message: 'Please type the role ID of the new employee',
             type: 'number', 
-            name: 'role_id',
-            default:3
+            name: 'role_id'
             }
         ]
         //will take above prompt responses and insert into employees table
@@ -244,7 +240,7 @@ const actions = {
                         const managerId = managerChoiceTable[0][0].id;
                         const managerName = managerChoiceTable[0][0].first_name + " " + managerChoiceTable[0][0].last_name;
 
-                        //uses the prompt return data (answers) on line 223, and the consts right above to insert new employee
+                        //uses the prompt return data (answers) on line 219, and the consts right above to insert new employee
                         db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
                         VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${managerId}, '${managerName}' )`,
                         (error, employees) => {

@@ -307,7 +307,7 @@ const actions = {
             })
             //will select employee based off user's prompt choice
             .then((employeeChoice) => {
-                console.log(employeeChoice);
+                
 
 
                //will select role titles from roles for populating into a roles array       
@@ -323,7 +323,7 @@ const actions = {
                     })
                     //will select new role based off user's prompt choice
                     .then((newRoleChoice) => {
-                    console.log(newRoleChoice)
+  
 
                     //will take user's employee choice for role update, and the new role choice
                     //and change the employee's role accordingly

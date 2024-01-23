@@ -237,8 +237,8 @@ const actions = {
                 choices: employees,
             })
             //will select employee based off user's prompt choice
-            .then((employeeChoiceID) => {
-                console.log(employeeChoiceID);
+            .then((employeeChoice) => {
+                console.log(employeeChoice);
 
 
                //will select role titles from roles for populating into a roles array       
@@ -253,19 +253,24 @@ const actions = {
                         choices: roles,
                     })
                     //will select new role based off user's prompt choice
-                    .then((newRoleChoiceID) => {
-                    console.log(newRoleChoiceID)
+                    .then((newRoleChoice) => {
+                    console.log(newRoleChoice)
+
+                    //will take user's employee choice for role update, and the new role choice
+                    //and change the employee's role accordingly
                     db.query(`
                      UPDATE employees
-                     SET role_id = ${newRoleChoiceID.id} WHERE employees.id = ${employeeChoiceID.id}
+                     SET role_id = ${newRoleChoice.id} WHERE employees.id = ${employeeChoice.id}
                     `, (error, employees) => {
                         if (error) console.error(error)
-                        console.log('successfully changed employee role');
-                    })
-                    })
-                     
+
+                        console.log(" \n\ " + `Successfully changed employee's role` + " \n\ " );
 
 
+                         //redirects user to initial prompt 
+                         start()
+                       })
+                    })
                 })        
             })
         })

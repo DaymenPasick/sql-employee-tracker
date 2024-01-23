@@ -231,33 +231,24 @@ const actions = {
                
                 db.promise().query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice])
                     .then((managerChoiceTable) => {
-                        // console.log(managerChoiceTable);
 
-                        console.log(managerChoiceTable[0][0].first_name);
+                        const managerId = managerChoiceTable[0][0].id;
+                        const managerName = managerChoiceTable[0][0].first_name + " " + managerChoiceTable[0][0].last_name;
+                        console.log(managerName);
+                        console.log(managerId);
                         
-                        // const table = JSON.stringify(managerChoiceTable)
-                        // console.log(table[3]);
+                        db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
+                        VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${managerId}, '${managerName}' )`,
+                        (error, employees) => {
+                         if (error) console.error(error)
+                           console.log("\n\ " + `Sucessfully added ${answers.new_first} ${answers.new_last} as a new employee` + "\n\ ");
+                             
+                           //redirects user to initial prompt 
+                           start()
+    
+                           });
+
                     }) 
-
-
-                        
-                    db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id)
-                    VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${managerChoice.id})`,
-                    (error, employees) => {
-                     if (error) console.error(error)
-                       console.log("\n\ " + `Sucessfully added ${answers.new_first} ${answers.new_last} as a new employee` + "\n\ ");
-                         
-                       //redirects user to initial prompt 
-                       start()
-
-                       });
-                        
-        
-                   
-
-                  
-
-
                }) 
             })  
         })

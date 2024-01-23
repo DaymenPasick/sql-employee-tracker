@@ -226,49 +226,59 @@ const actions = {
             SELECT id as value,
             title as name
             FROM roles
-            
-            
-            
-            `)
-
-
-
-
-
-            //will be use to prompt user to choose manager name
-            db.query(`
-            SELECT id as value,
-            CONCAT(first_name, ' ', last_name) as name
-            FROM employees
-            WHERE employees.manager_id IS NULL
-            `, (error, managers = []) => {  
+            `, (error, roles = []) =>{
               prompt({
-                  message: 'Choose the employees manager',
-                  type:'rawlist',
-                  name: 'id',
-                  choices: managers
+                message: 'Choose a role for the employee',
+                type:'rawlist',
+                name: 'id',
+                choices: roles
               })
-              .then((managerChoice) => {
-                db.promise().query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice])
-                    .then((managerChoiceTable) => {
+               .then((roleChoice) => {
+                console.log(roleChoice);
 
-                        //these consts are set from data return in the above db.promise query
-                        const managerId = managerChoiceTable[0][0].id;
-                        const managerName = managerChoiceTable[0][0].first_name + " " + managerChoiceTable[0][0].last_name;
 
-                        //uses the prompt return data (answers) on line 219, and the consts right above to insert new employee
-                        db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
-                        VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${managerId}, '${managerName}' )`,
-                        (error, employees) => {
-                         if (error) console.error(error)
-                           console.log("\n\ " + `Sucessfully added ${answers.new_first} ${answers.new_last} as a new employee` + "\n\ ");
-                             
-                           //redirects user to initial prompt 
-                           start()
-                           });
-                    }) 
-               }) 
-            })  
+
+
+
+
+
+                //will be use to prompt user to choose manager name
+                db.query(`
+                SELECT id as value,
+                CONCAT(first_name, ' ', last_name) as name
+                FROM employees
+                WHERE employees.manager_id IS NULL
+                `, (error, managers = []) => {  
+                  prompt({
+                      message: 'Choose the employees manager',
+                      type:'rawlist',
+                      name: 'id',
+                      choices: managers
+                  })
+                  .then((managerChoice) => {
+                    db.promise().query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice])
+                        .then((managerChoiceTable) => {
+    
+                            //these consts are set from data return in the above db.promise query
+                            const managerId = managerChoiceTable[0][0].id;
+                            const managerName = managerChoiceTable[0][0].first_name + " " + managerChoiceTable[0][0].last_name;
+    
+                            //uses the prompt return data (answers) on line 219, and the consts right above to insert new employee
+                            db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
+                            VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${managerId}, '${managerName}' )`,
+                            (error, employees) => {
+                             if (error) console.error(error)
+                               console.log("\n\ " + `Sucessfully added ${answers.new_first} ${answers.new_last} as a new employee` + "\n\ ");
+                                 
+                               //redirects user to initial prompt 
+                               start()
+                               });
+                        }) 
+                   }) 
+                })
+
+               })
+            })
         })
     },
 

@@ -236,13 +236,16 @@ const actions = {
                 choices: employees,
             })
             //will select employee based off user's prompt choice
-            .then((employeeChoice) => {
-                console.log(employeeChoice);
+            .then((employeeChoiceID) => {
+                console.log(employeeChoiceID);
 
 
 
-                db.query('SELECT * FROM ?? WHERE ?', ['employees', employeeChoice], (error, employees) => {
+                db.query('SELECT * FROM ?? WHERE ?', ['employees', employeeChoiceID], (error, employees) => {
                     console.table(employees)
+
+
+                db.query('SELECT id as value, title as name FROM roles')    
 
 
                 })

@@ -172,6 +172,7 @@ const actions = {
         prompt(newRolePrompt)
         .then((answer) => {
 
+            //will prompt user to choose from a list of departments
             db.query(`
             SELECT id as value,
             name as name
@@ -185,6 +186,9 @@ const actions = {
                   })
                   .then((departmentChoice) => {
 
+                    //uses prompt return data(answer) on line 173,
+                    //prompt return data (departmentChoice) on line 187
+                    //to create a new role
                     db.query(`INSERT INTO roles (title, salary, department_id) 
                     VALUES ('${answer.new_title}', ${answer.new_salary}, ${departmentChoice.id} )`,
                     (error, roles) => {
@@ -260,9 +264,9 @@ const actions = {
                             const managerId = managerChoiceData[0][0].id;
                             const managerName = managerChoiceData[0][0].first_name + " " + managerChoiceData[0][0].last_name;
     
-                            //uses prompt return data(roleChoice) on line 231,
-                            //prompt return data (answers) on line 219,
-                            //and the consts right above to insert new employee into employee table
+                            //uses prompt return data(answers) on line 230,
+                            //prompt return data(roleChoice) on line 244,
+                            //and the consts on line 264 above to create new employee
                             db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
                             VALUES ('${answers.new_first}', '${answers.new_last}', ${roleChoice.id}, ${managerId}, '${managerName}' )`,
                             (error, employees) => {

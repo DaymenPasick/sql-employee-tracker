@@ -14,7 +14,7 @@ An app that will let you view and manage staff, departments, and positions in yo
 ## Usage
 
 - Click on the following link to watch a "How To" video guide!:
- (https://www.awesomescreenshot.com/video/23634808?key=70c3463b86cdce484714c2a66df101b9)
+ (https://www.awesomescreenshot.com/video/24297961?key=1469d22b2317e0b27abde5aa0b043241)
 
    
 - Terminal prompts to populate your newREADME

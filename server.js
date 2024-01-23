@@ -241,43 +241,34 @@ const actions = {
                 console.log(employeeChoiceID);
 
 
-                        //space holder
+               //will select role titles from roles for populating into a roles array       
+                db.query(`
+                SELECT id as value,
+                title as name FROM roles
+                `, (error, roles = []) => {
+                    prompt({
+                        message: 'Choose a new role for the employee',
+                        type: 'rawlist',
+                        name: 'id',
+                        choices: roles,
+                    })
+                    //will select new role based off user's prompt choice
+                    .then((newRoleChoiceID) => {
+                    console.log(newRoleChoiceID)
+                    db.query(`
+                     UPDATE employees
+                     SET role_id = ${newRoleChoiceID.id} WHERE employees.id = ${employeeChoiceID.id}
+                    `, (error, employees) => {
+                        if (error) console.error(error)
+                        console.log('successfully changed employee role');
+                    })
+                    })
+                     
 
 
-        //will select role titles from roles for populating into a roles array       
-        db.query(`
-          SELECT id as value,
-          title as name FROM roles
-          `, (error, roles = []) => {
-            prompt({
-                message: 'Choose a new role for the employee',
-                type: 'rawlist',
-                name: 'id',
-                choices: roles,
+                })        
             })
-            //will select new role based off user's prompt choice
-            .then((newRoleChoiceID) => {
-            console.log(newRoleChoiceID)
-                //space holder
-            })
-           })    
-
-
-                
-            })
-            // //will update employee selected from above prompt
-            // .then((answer)=> {
-
-            //     //need to have code for update query
-            // })
-
-          })
-
-
-
-
-
-        //need code to update info from that employee
+        })
     },
 
     //will handle user's choice to exit command prompt

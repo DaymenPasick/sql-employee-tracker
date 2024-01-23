@@ -206,6 +206,27 @@ const actions = {
         //will take above prompt responses and insert into employees table
         prompt(newEmployeePrompt)
         .then((answer) => {
+
+
+            // db.query(`
+            // SELECT id as value,
+            // CONCAT(first_name, ' ', last_name) as name
+            // FROM employees
+            // `, (error, employees = []) => {  
+            //   prompt({
+            //       message: 'Choose the employee who needs their role updated',
+            //       type:'rawlist',
+            //       name: 'id',
+            //       choices: employees,
+            //   })
+            //   //will select employee based off user's prompt choice
+            //   .then((employeeChoice) => {
+                  
+
+
+
+
+
           db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
            VALUES ('${answer.new_first}', '${answer.new_last}', ${answer.role_id}, ${answer.manager_id},${answer.manager_name} )`,
            (error, employees) => {

@@ -166,12 +166,7 @@ const actions = {
             message: 'Please type the salary of the new role',
             type: 'number', 
             name: 'new_salary'
-            },
-            {
-            message: 'Please type the deparment ID of the new role',
-            type: 'number', 
-            name: 'department_id'
-            },
+            }
         ]
         //will take above prompt responses and insert into roles table
         prompt(newRolePrompt)
@@ -188,27 +183,19 @@ const actions = {
                     name: 'id',
                     choices: departments
                   })
-                  .then((departmentChoice))
+                  .then((departmentChoice) => {
 
-
-                  db.query(`INSERT INTO roles (title, salary, department_id) 
-                  VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
-                  (error, roles) => {
-                   if (error) console.error(error)
-                     console.log("\n\ " + `Sucessfully added ${answer.new_title} as a new role` + "\n\ ");
-                       
-                     //redirects user to initial prompt 
-                     start()
-                   })
-
-
+                    db.query(`INSERT INTO roles (title, salary, department_id) 
+                    VALUES ('${answer.new_title}', ${answer.new_salary}, ${departmentChoice.id} )`,
+                    (error, roles) => {
+                     if (error) console.error(error)
+                       console.log("\n\ " + `Sucessfully added ${answer.new_title} as a new role` + "\n\ ");
+                         
+                       //redirects user to initial prompt 
+                       start()
+                       })
+                })
             })
-
-
-
-
-
-
         })
     },
 

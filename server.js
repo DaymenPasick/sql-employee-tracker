@@ -236,10 +236,15 @@ const actions = {
                 choices: employees,
             })
             //will select employee based off user's prompt choice
-            .then((answers) => {
-                console.log(answers);
-                db.query('SELECT * FROM ?? WHERE ?', ['employees', answers], (error, employees) => {
+            .then((employeeChoice) => {
+                console.log(employeeChoice);
+
+
+
+                db.query('SELECT * FROM ?? WHERE ?', ['employees', employeeChoice], (error, employees) => {
                     console.table(employees)
+
+
                 })
             })
             // //will update employee selected from above prompt

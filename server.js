@@ -42,7 +42,7 @@ const start = () => {
             { name: 'Add Department', value: 'addDepartment'},
             { name: 'Add Role', value: 'addRole'},
             { name: 'Add Employee', value: 'addEmployee'},
-            { name: 'Update Employee', value: 'updateEmployee'},
+            { name: 'Update Employee Role', value: 'updateEmployeeRole'},
 
             //for user to exit out of prompt loop
             { name: 'Exit', value: 'exit'},
@@ -221,7 +221,7 @@ const actions = {
 
 
     //will handle choice to update employee
-    updateEmployee: () => {
+    updateEmployeeRole: () => {
         //need a prompt to choose employee
         const prompt = inquirer.createPromptModule();
         db.query(`

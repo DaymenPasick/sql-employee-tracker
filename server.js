@@ -56,6 +56,8 @@ const start = () => {
 
 //contains all methods that will trigger based off initial terminal prompt choices
 const actions = {
+
+
     //will handle choice to View All Departments
     departmentList: () => {
         db.query('SELECT * FROM departments', (error, departments) =>{
@@ -70,6 +72,10 @@ const actions = {
         })
     },
 
+
+
+
+
     //will handle choice to View All Roles
     roleList: () => {
         db.query('SELECT * FROM roles', (error, roles) =>{
@@ -83,6 +89,10 @@ const actions = {
             start()
         })
     },
+
+
+
+
 
     //will handle choice to View All Employees
     employeeList: () => {
@@ -110,6 +120,10 @@ const actions = {
             })
     }, 
 
+
+
+
+
     //will handle choice to add department
     addDepartment: () => {
         const prompt = inquirer.createPromptModule();
@@ -129,6 +143,10 @@ const actions = {
             })
         })
     },
+
+
+
+
 
 
     // //will handle choice to add role
@@ -168,6 +186,10 @@ const actions = {
         })
     },
 
+
+
+
+    
 
     //will handle choice to add new employee
     addEmployee: () => {
@@ -220,7 +242,7 @@ const actions = {
                         const managerId = managerChoiceTable[0][0].id;
                         const managerName = managerChoiceTable[0][0].first_name + " " + managerChoiceTable[0][0].last_name;
 
-                        //uses the prompt return data (answers) on line 199, and the consts right above to insert new employee
+                        //uses the prompt return data (answers) on line 201, and the consts right above to insert new employee
                         db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
                         VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${managerId}, '${managerName}' )`,
                         (error, employees) => {
@@ -235,6 +257,9 @@ const actions = {
             })  
         })
     },
+
+
+
 
 
 
@@ -292,6 +317,9 @@ const actions = {
         })
     },
 
+
+
+
     //will handle user's choice to exit command prompt
     exit: () => {
         console.log(" \n\ Goodbye");
@@ -303,14 +331,6 @@ const actions = {
 
 //will initiate the entire program
 start();
-
-                            // db.query('SELECT * FROM ?? WHERE ?', ['roles', newRoleChoiceID], (error, roles) => {
-                            //     console.table(roles)
-                            //   })
-
-                // db.query('SELECT * FROM ?? WHERE ?', ['employees', employeeChoiceID], (error, employees) => {
-                //     console.table(employees)
-                //         })
 
 
                 

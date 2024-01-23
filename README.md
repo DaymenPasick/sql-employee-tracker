@@ -4,7 +4,7 @@ An app that will let you view and manage staff, departments, and positions in yo
 
 ## Description
 
-- This app allows the user to dynamically generate their own professional README by just entering a few questions!
+- This app allows you to view your businesses employees, roles, and departments. You can even add new roles or departments, as well as add/update employees!
 
 
 ## Installation
@@ -20,11 +20,6 @@ An app that will let you view and manage staff, departments, and positions in yo
 - Terminal prompts to populate your newREADME
     ![Sample README](./assets/imgs/terminalPromptsForREADME.png)   
    
-   
-- Generated newREADME sample
-    ![Sample README](./assets/imgs/sampleGeneratedREADME.png)
-    
-
 
 
 ## License

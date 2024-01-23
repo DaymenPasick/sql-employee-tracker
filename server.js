@@ -208,11 +208,6 @@ const actions = {
             message: 'Please type the last name of the new employee',
             type: 'input', 
             name: 'new_last'
-            },
-            {
-            message: 'Please type the role ID of the new employee',
-            type: 'number', 
-            name: 'role_id'
             }
         ]
         //will take above prompt responses and insert into employees table
@@ -234,14 +229,7 @@ const actions = {
                 choices: roles
               })
                .then((roleChoice) => {
-                console.log(roleChoice);
-
-
-
-
-
-
-
+ 
                 //will be use to prompt user to choose manager name
                 db.query(`
                 SELECT id as value,
@@ -257,15 +245,17 @@ const actions = {
                   })
                   .then((managerChoice) => {
                     db.promise().query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice])
-                        .then((managerChoiceTable) => {
+                        .then((managerChoiceData) => {
     
                             //these consts are set from data return in the above db.promise query
-                            const managerId = managerChoiceTable[0][0].id;
-                            const managerName = managerChoiceTable[0][0].first_name + " " + managerChoiceTable[0][0].last_name;
+                            const managerId = managerChoiceData[0][0].id;
+                            const managerName = managerChoiceData[0][0].first_name + " " + managerChoiceData[0][0].last_name;
     
-                            //uses the prompt return data (answers) on line 219, and the consts right above to insert new employee
+                            //uses prompt return data(roleChoice) on line 231,
+                            //prompt return data (answers) on line 219,
+                            //and the consts right above to insert new employee into employee table
                             db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
-                            VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${managerId}, '${managerName}' )`,
+                            VALUES ('${answers.new_first}', '${answers.new_last}', ${roleChoice.id}, ${managerId}, '${managerName}' )`,
                             (error, employees) => {
                              if (error) console.error(error)
                                console.log("\n\ " + `Sucessfully added ${answers.new_first} ${answers.new_last} as a new employee` + "\n\ ");
@@ -276,7 +266,6 @@ const actions = {
                         }) 
                    }) 
                 })
-
                })
             })
         })

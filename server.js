@@ -232,9 +232,11 @@ const actions = {
                 db.promise().query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice])
                     .then((managerChoiceTable) => {
                         // console.log(managerChoiceTable);
+
+                        console.log(managerChoiceTable[0][0].first_name);
                         
-                        const table = JSON.stringify(managerChoiceTable)
-                        console.log(table[0]);
+                        // const table = JSON.stringify(managerChoiceTable)
+                        // console.log(table[3]);
                     }) 
 
 

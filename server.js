@@ -58,6 +58,9 @@ const start = () => {
 const actions = {
 
 
+
+    //====== View All Departments Option ===================
+    
     //will handle choice to View All Departments
     departmentList: () => {
         db.query('SELECT * FROM departments', (error, departments) =>{
@@ -74,7 +77,7 @@ const actions = {
 
 
 
-
+    //====== View All Roles Option ===================
 
     //will handle choice to View All Roles
     roleList: () => {
@@ -92,7 +95,7 @@ const actions = {
 
 
 
-
+    //====== View All Employees Option ===================
 
     //will handle choice to View All Employees
     employeeList: () => {
@@ -122,7 +125,7 @@ const actions = {
 
 
 
-
+    //====== Add Department Option ===================
 
     //will handle choice to add department
     addDepartment: () => {
@@ -147,7 +150,7 @@ const actions = {
 
 
 
-
+    //====== Add Role Option ===================
 
     // //will handle choice to add role
     addRole: () => {
@@ -189,7 +192,7 @@ const actions = {
 
 
 
-    
+    //====== Add Employee Option ===================
 
     //will handle choice to add new employee
     addEmployee: () => {
@@ -261,7 +264,7 @@ const actions = {
 
 
 
-
+    //====== Update Employee Option ===================
 
     //will handle choice to update employee
     updateEmployeeRole: () => {

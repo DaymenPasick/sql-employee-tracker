@@ -182,22 +182,33 @@ const actions = {
             name as name
             FROM departments
             `, (error, departments = []) => {
-                
+                prompt({
+                    message: 'Choose the department for the new role',
+                    type:'rawlist',
+                    name: 'id',
+                    choices: departments
+                  })
+                  .then((departmentChoice))
+
+
+                  db.query(`INSERT INTO roles (title, salary, department_id) 
+                  VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
+                  (error, roles) => {
+                   if (error) console.error(error)
+                     console.log("\n\ " + `Sucessfully added ${answer.new_title} as a new role` + "\n\ ");
+                       
+                     //redirects user to initial prompt 
+                     start()
+                   })
+
+
             })
 
 
 
 
 
-          db.query(`INSERT INTO roles (title, salary, department_id) 
-           VALUES ('${answer.new_title}', ${answer.new_salary}, ${answer.department_id} )`,
-           (error, roles) => {
-            if (error) console.error(error)
-              console.log("\n\ " + `Sucessfully added ${answer.new_title} as a new role` + "\n\ ");
-                
-              //redirects user to initial prompt 
-              start()
-            })
+
         })
     },
 

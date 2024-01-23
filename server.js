@@ -232,7 +232,7 @@ const actions = {
             prompt({
                 message: 'Choose an employee to update',
                 type:'rawlist',
-                name: 'employeeChoice',
+                name: 'id',
                 choices: employees,
             })
             //will select employee based off user's prompt choice
@@ -242,11 +242,11 @@ const actions = {
                     console.table(employees)
                 })
             })
-            //will update employee selected from above prompt
-            .then((answer)=> {
-                
-                //need to have code for update query
-            })
+            // //will update employee selected from above prompt
+            // .then((answer)=> {
+
+            //     //need to have code for update query
+            // })
 
           })
 

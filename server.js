@@ -227,7 +227,7 @@ const actions = {
         db.query(`
           SELECT id as value,
           CONCANT(first_name, ' ', last_name) as name
-          FROM employee
+          FROM employees
           `, (error, employees = []) => {
             prompt({
                 message: 'Choose an employee to update',
@@ -235,8 +235,10 @@ const actions = {
                 name: 'employeeChoice',
                 choices: employees,
             })
-
-
+            .then((answers) => {
+                console.log(answers);
+                db.query('SELECT * FROM ?? WHERE ?', ['employees', answers])
+            })
           })
 
 

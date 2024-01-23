@@ -16,54 +16,53 @@ const db = mysql.createConnection(
     console.log(`Connected to business_db`)
 );
 
-//for allowing use of terminal prompts for the user
+//for use of inquier's prompt functionality
 const prompt = inquirer.createPromptModule();
 
 
 
 
 
-//this will start our initial terminal prompts to give user
-//options choices on what they want to view in the business_db
+
+//declaring a start function for all of our terminal prompts
 const start = () => {
     prompt({
         message: 'Choose one of the following options',
         type: 'rawlist', 
         name: 'view',
         choices: [
-            //The following choices will return values for use in 
-            //js database queries. Viewing-purposed.
+            //choices will return values for use in 
+            //db.queries. --- Viewing-purposed.
             { name: 'View All Departments', value: 'departmentList'},
             { name: 'View All Roles', value: 'roleList'},
             { name: 'View All Employees', value: 'employeeList'},
             
-            //The following choices will return values for use in 
-            //js database queries. Updating-purposed.
+            //choices will return values for use in 
+            //db.queries. --- Updating-purposed.
             { name: 'Add Department', value: 'addDepartment'},
             { name: 'Add Role', value: 'addRole'},
             { name: 'Add Employee', value: 'addEmployee'},
             { name: 'Update Employee', value: 'updateEmployee'},
 
-            //For user to exit out of prompt loop
+            //for user to exit out of prompt loop
             { name: 'Exit', value: 'exit'},
         ]
     })
-    //this will take the value from the key-value pair choosen based off
-    //user's initial terminal prompt answer. It will use that as a 
-    //parameter for our actions()
+    //will take in initial prompt answers and execute functions accordingly
      .then((answers) => actions[answers.view]())
 };
 
 
 
-//actions object contains all methods that will handle initial terminal prompt answers
+//contains all methods that will trigger based off initial terminal prompt choices
 const actions = {
     //will handle choice to View All Departments
     departmentList: () => {
         db.query('SELECT * FROM departments', (error, departments) =>{
             if (error) console.error(error);
 
-            console.log(" \n\ "); //added this line for better table spacing
+            //for better table spacing in log result
+            console.log(" \n\ "); 
             console.table(departments);
 
             //redirects to initial user prompt
@@ -76,7 +75,8 @@ const actions = {
         db.query('SELECT * FROM roles', (error, roles) =>{
             if (error) console.error(error);
 
-            console.log(" \n\ "); //added this line for better table spacing
+            //for better table spacing in log result
+            console.log(" \n\ "); 
             console.table(roles);
 
             //redirects to initial user prompt
@@ -87,18 +87,22 @@ const actions = {
     //will handle choice to View All Employees
     employeeList: () => {
 
-        // const trialJoin = 'SELECT employees.id, first_name, last_name, manager_name, role_id FROM employees LEFT OUTER JOIN roles ON employees.role_id = roles.id';
-        const trialJoin = `
-            SELECT employees.id, employees.first_name, employees.last_name, roles.title, roles.salary, departments.name AS department
+        //join statement for the db.query used in this method
+        const joinStatement = `
+            SELECT employees.id, employees.first_name, employees.last_name, 
+            roles.title, roles.salary, departments.name AS department 
             FROM employees 
             LEFT JOIN roles 
             ON employees.role_id = roles.id
             LEFT JOIN departments
             ON roles.department_id = departments.id;`
-            db.query(trialJoin, ( error, employees ) => {
+
+            //uses the above joinStatement for query parameter
+            db.query(joinStatement, ( error, employees ) => {
                 if (error) console.error(error);
 
-                console.log(" \n\ "); //added this line for better table spacing
+                //for better table spacing in log result
+                console.log(" \n\ "); 
                 console.table(employees) 
 
                  //redirects to initial user prompt
@@ -114,6 +118,7 @@ const actions = {
             type: 'input', 
             name: 'new_department'
         })
+        //will take above prompt response and insert into department table
         .then((answer) => {
           db.query(`INSERT INTO departments (name) VALUES ('${answer.new_department}')`, (error, departments) => {
             if (error) console.error(error)
@@ -148,7 +153,7 @@ const actions = {
             name: 'department_id'
             },
         ]
-        //will take above prompt responses and insert into roles table/log response
+        //will take above prompt responses and insert into roles table
         prompt(newRolePrompt)
         .then((answer) => {
           db.query(`INSERT INTO roles (title, salary, department_id) 
@@ -164,7 +169,7 @@ const actions = {
     },
 
 
-    // //will handle choice to add new employee
+    //will handle choice to add new employee
     addEmployee: () => {
         const prompt = inquirer.createPromptModule();
 
@@ -198,7 +203,7 @@ const actions = {
             default: 'NULL'
             },
         ]
-        //will take above prompt responses and insert into roles table/log response
+        //will take above prompt responses and insert into employees table
         prompt(newEmployeePrompt)
         .then((answer) => {
           db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
@@ -214,11 +219,6 @@ const actions = {
     },
 
 
-
-
-
-
- 
 
     // //will handle choice to update employee
     // updateEmployee: () => {

@@ -213,16 +213,14 @@ const actions = {
                   choices: managers,
               })
               .then((managerChoice) => {
-
-
                 db.promise().query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice])
                     .then((managerChoiceTable) => {
 
+                        //these consts are set from data return in the above db.promise query
                         const managerId = managerChoiceTable[0][0].id;
                         const managerName = managerChoiceTable[0][0].first_name + " " + managerChoiceTable[0][0].last_name;
-                        console.log(managerName);
-                        console.log(managerId);
-                        
+
+                        //uses the prompt return data (answers) on line 199, and the consts right above to insert new employee
                         db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id, manager_name)
                         VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${managerId}, '${managerName}' )`,
                         (error, employees) => {
@@ -231,9 +229,7 @@ const actions = {
                              
                            //redirects user to initial prompt 
                            start()
-    
                            });
-
                     }) 
                }) 
             })  

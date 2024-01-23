@@ -224,17 +224,14 @@ const actions = {
                 console.log(managerChoice.id);
 
 
-                const findManagerDetails = (managerChoice) => {
-                    db.query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice], (error, employees) => {
+               
+                    db.promise().query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice], (error, employees) => {
+                        let newID = employees.first_name;
+                        console.log(newID);
                         console.table(employees)
 
-                        return employees
-                     })
-                   } 
 
-                  console.table(findManagerDetails(managerChoice)) 
-
-
+                        
                     db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id)
                     VALUES ('${answers.new_first}', '${answers.new_last}', ${answers.role_id}, ${managerChoice.id})`,
                     (error, employees) => {
@@ -244,7 +241,14 @@ const actions = {
                        //redirects user to initial prompt 
                        start()
 
-                   });
+                       });
+                        
+                     })
+                   
+
+                  
+
+
               }) 
             })  
         })

@@ -223,6 +223,20 @@ const actions = {
     //will handle choice to update employee
     updateEmployee: () => {
         //need a prompt to choose employee
+        const prompt = inquirer.createPromptModule();
+        db.query(`
+          SELECT id as value,
+          CONCANT(first_name, ' ', last_name) as name
+          FROM employee
+        `
+
+
+        )
+
+
+
+
+
         //need code to update info from that employee
     },
 

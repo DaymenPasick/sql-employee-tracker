@@ -221,14 +221,18 @@ const actions = {
                   choices: managers,
               })
               .then((managerChoice) => {
-                console.log(managerChoice.id);
+                // console.log(managerChoice.id);
 
 
                
-                    db.promise().query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice], (error, employees) => {
-                        let newID = employees.first_name;
-                        console.log(newID);
-                        console.table(employees)
+                db.promise().query('SELECT * FROM ?? WHERE ?', ['employees', managerChoice])
+                    .then((managerChoiceTable) => {
+                        // console.log(managerChoiceTable);
+                        
+                        res.json(managerChoiceTable)
+
+                        console.log(managerChoiceTable);
+                    }) 
 
 
                         
@@ -243,13 +247,13 @@ const actions = {
 
                        });
                         
-                     })
+        
                    
 
                   
 
 
-              }) 
+               }) 
             })  
         })
     },
